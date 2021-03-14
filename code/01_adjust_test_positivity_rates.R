@@ -106,6 +106,10 @@ adjusted_texas_testing_data = top_12_populous_states_testing_data %>%
   adjust_test_positivity_data(., model=top_12_populous_states_model)
 
 #' create plots for observed and adjusted testing positivity rates by top 12 populous states and texas
+
+start_date = min(top_12_populous_states_testing_data$date)
+end_date = max(top_12_populous_states_testing_data$date)
+
 observed_adjusted_populous_states_testing_plot = adjusted_populous_states_testing_data %>%
   ggplot(aes(x = date, y = value, colour = variable)) +
   facet_wrap(~state_name, scale = "free_y")  +
@@ -113,7 +117,10 @@ observed_adjusted_populous_states_testing_plot = adjusted_populous_states_testin
   adjustment_theme +
   adjustment_labels +
   scale_colour_brewer(palette = "Set1") +
-  scale_y_continuous(label=comma) +
+  scale_y_continuous(label=comma) +  
+  scale_x_date(date_breaks = "1 month", 
+               limits = as.Date(c(start_date, end_date), format="%Y-%m-%d"),
+               date_labels="%b-%Y" ) + 
   ggtitle("Trends in Top 12 Populous States Observed and Adjusted Daily COVID-19 Test Positivity Rate")
 
 #' plot suggests relatively more unknown cases in March and April
@@ -125,6 +132,9 @@ observed_adjusted_texas_testing_plot = adjusted_texas_testing_data %>%
   adjustment_labels +
   scale_colour_brewer(palette = "Set1") +
   scale_y_continuous(label=comma) +
+  scale_x_date(date_breaks = "1 month", 
+               limits = as.Date(c(start_date, end_date), format="%Y-%m-%d"),
+               date_labels="%b-%Y" ) + 
   ggtitle("Trends in Texas' Observed and Adjusted Daily COVID-19 Test Positivity Rate")
 
 #' after adjustment for test-positivity, plot suggests new cases are still accelerating
