@@ -19,9 +19,10 @@ generate_smooth_data = function(state_df, model){
 the_theme = theme(axis.text.y = element_blank(),
                    panel.grid.major.x = element_blank(),
                    panel.grid.minor.x = element_blank(),
-                   panel.grid.minor.y = element_blank())
+                   panel.grid.minor.y = element_blank(),
+                  legend.position="bottom")
 
 the_labs = labs(x = "", 
                  colour = "", 
                  y = "New daily confirmed cases",
-                 caption = "Source: data from covidtracking.com, positivity adjustment by http://freerangestats.info")
+                 caption = "Source: data from covidtracking.com")
