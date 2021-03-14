@@ -1,2 +1,25 @@
-.Rproj*
+# R files
+.Rhistory
+.Rapp.history
+.httr-oauth
+*.RData
+*-Ex.R
+*.utf8.md
+*.knit.md
+*.Rproj.user
 *.Rproj
+
+# LaTex files
+*.aux
+*.bbl
+*.blg
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+
+# folders
+test/
+data/
+rdata/
